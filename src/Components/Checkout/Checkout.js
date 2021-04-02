@@ -7,26 +7,26 @@ import { UserContext } from '../../App';
 import Header from '../Header/Header';
 import './Checkout.css';
 const Checkout = () => {
-    const [loggedInUser,setLoggedInUser] = useContext(UserContext);
-    const [cart,setCart]=useState({})
-   const {id} = useParams();
-   useEffect(()=>{
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const [cart, setCart] = useState({})
+  const { id } = useParams();
+  useEffect(() => {
     fetch(`https://whispering-tundra-41421.herokuapp.com/checkout/${id}`)
-    .then(res => res.json())
-    .then(data => {
-      const product ={
-        name:data.name,
-        price:data.price,
-        photoUrl:data.photoUrl
-      }
-     setCart(data);
-  
-    })
-   },[id])
+      .then(res => res.json())
+      .then(data => {
+        const product = {
+          name: data.name,
+          price: data.price,
+          photoUrl: data.photoUrl
+        }
+        setCart(data);
 
-  const handleCheckOut = ()=>{
-    const Order = {email:loggedInUser.email,productName:cart.name,price:cart.price,OrderTime: new Date() };
-    
+      })
+  }, [id])
+
+  const handleCheckOut = () => {
+    const Order = { email: loggedInUser.email, productName: cart.name, price: cart.price, OrderTime: new Date() };
+
     fetch('https://whispering-tundra-41421.herokuapp.com/addOrder', {
       method: 'POST',
       headers: {
@@ -40,19 +40,19 @@ const Checkout = () => {
       })
 
 
-      
+
   }
 
 
-    return (
-        <div className="App">
-            <Header></Header>
-           <img style={{width:'200px',height:'200px'}} src={cart.photoUrl} alt=""/>
-           <p>Name:{cart.name}</p>
-           <p>Price:{cart.price}</p>
-           <button onClick={handleCheckOut} className=" btn btn-primary">CheckOut</button>
-        </div>
-    );
+  return (
+    <div className="App">
+      <Header></Header>
+      <img style={{ width: '200px', height: '200px' }} src={cart.photoUrl} alt="" />
+      <p>Name:{cart.name}</p>
+      <p>Price:{cart.price}</p>
+      <button onClick={handleCheckOut} className=" btn btn-primary">CheckOut</button>
+    </div>
+  );
 };
 
 export default Checkout;

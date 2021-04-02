@@ -8,15 +8,15 @@ import { UserContext } from '../../App';
 
 const Home = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
- 
- 
+
+
 
   const history = useHistory();
   const handleClick = (id) => {
-    history.push("/checkout/"+id);
+    history.push("/checkout/" + id);
 
   }
- 
+
 
 
 
@@ -28,12 +28,12 @@ const Home = () => {
         setAllEvent(data);
       })
   }, [])
-  
+
 
   return (
     <div>
       <Header></Header>
-     
+
       <div className="row">
         {
           allEvent.map(event => <Card style={{ width: '13rem' }}>

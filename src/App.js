@@ -17,41 +17,41 @@ import Header from './Components/Header/Header';
 import Manage from './Components/Manage/Manage';
 export const UserContext = createContext();
 function App() {
-  const [loggedInUser,setLoggedInUser] = useState({});
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <UserContext.Provider value={[loggedInUser,setLoggedInUser]}>
-    <Router>
-     
-      <Switch>
-      <Route path="/home">
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <Router>
+
+        <Switch>
+          <Route path="/home">
             <Home></Home>
           </Route>
           <PrivateRoute path="/orders">
-           <Orders></Orders>
+            <Orders></Orders>
           </PrivateRoute>
           <PrivateRoute path="/admin">
-           <Admin></Admin>
+            <Admin></Admin>
           </PrivateRoute>
           <Route path="/admin">
-           <Admin></Admin>
+            <Admin></Admin>
           </Route>
           <Route path="/login">
-          <Login></Login>
+            <Login></Login>
           </Route>
           <Route path="/manage">
-          <Manage></Manage>
+            <Manage></Manage>
           </Route>
           <PrivateRoute path="/checkout/:id">
-          <Checkout></Checkout>
+            <Checkout></Checkout>
           </PrivateRoute>
           <Route exact path="/">
-             <Home></Home>
+            <Home></Home>
           </Route>
-          <Route  path="*">
+          <Route path="*">
             <NotFound></NotFound>
           </Route>
-      </Switch>
-    </Router>
+        </Switch>
+      </Router>
     </UserContext.Provider>
   )
 }
