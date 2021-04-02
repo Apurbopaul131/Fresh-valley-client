@@ -35,49 +35,7 @@ function Login() {
     const location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
 
-    // const provider = new firebase.auth.GoogleAuthProvider();
-    // const handleClicked = () => {
-    //     firebase.auth().signInWithPopup(provider)
-    //         .then(result => {
-    //             const { displayName, email, photoURL } = result.user;
-    //             const userData = {
-    //                 IsUser: true,
-    //                 Name: displayName,
-    //                 email: email,
-    //                 Password: '',
-    //                 Photo: photoURL
-    //             }
-    //             setUser(userData);
-    //             const newThing = {...loggedInUser,userData}
-    //             setLoggedInUser(newThing);
-    //             history.replace(from);
-
-
-    //         }
-    //         )
-    //         .catch(error => {
-    //             console.log(error);
-    //         })
-
-
-    // }
-    // const handleSignOut = () => {
-    //     firebase.auth().signOut()
-    //         .then(result => {
-    //             const UserOut = {
-    //                 IsUser: false,
-    //                 Name: '',
-    //                 email: '',
-    //                 Photo: ''
-
-    //             }
-    //             setUser(UserOut);
-               
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // }
+   
     const handleBlur = (e) => {
 
         let IsValid = true;
